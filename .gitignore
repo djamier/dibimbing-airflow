@@ -1,0 +1,6 @@
+venv
+.env
+logs
+plugins
+dags/__pycache__
+backup
