@@ -1,22 +1,31 @@
-# Starting to work
+# Getting Started with Airflow
 
-To start working with Airflow you can run the following command:
+To begin working with Airflow, follow these steps:
 
-Open your terminal then run the following commands:
+# Cloning the Repository
+
+Open your terminal and run the following commands:
+```bash
+https://github.com/sastriodjamier/dibimbing-airflow.git
+```
 
 ```bash
-git clone git@github.com:sastriodjamier/dibimbing-airflow.git
+cd dibimbing-airflow
 ```
+This command will do the following things:
+
+- Download the repository to your local machine.
+- You'll be in dibimbing-airflow repository's directory
+
+# Setting Up the Environment
 
 ```bash
 source config.sh
 ```
-
 This command will do the following things:
 
 - Create `venv` directory if not exist.
 - Activate virtual environment.
-- Update to latest pip.
 - Install all pip packages defined in `requirements.txt`.
 
 
@@ -24,37 +33,22 @@ This command will do the following things:
 
 To start Airflow, you can run the following commands:
 
-```zsh
-mkdir .env
-echo -e "AIRFLOW_UID=$(id -u)" > .env
+```bash
+touch .env
+echo -e 'AIRFLOW_UID=50000' > .env
 ```
 
-```zsh
-docker build -t airflow_image .
+```bash
+docker compose up airflow-init
 ```
 
-This command will do the following things:
-- Build an airflow image.
-- Install all pip packages defined in `requirements.txt`.
-
-
-```zsh
+```bash
 docker-compose up -d
 ```
 This command will start Airflow and its dependencies in separate Docker containers, and the -d flag runs the containers in detached mode, allowing you to continue using your terminal.
 
 # Accessing Airflow
 
-Once Airflow is running, you can access the Airflow UI by navigating to http://localhost:8080 in your web browser.
+Once Airflow is running, you can access the Airflow UI by navigating to http://localhost:8082 in your web browser.
 
 From the Airflow UI, you can create and manage DAGs, which are used to define workflows in Airflow.
-
-
-# Stop working
-
-To stop working with Airflow , you can run the following commands:
-
-```zsh
-docker-compose down
-deactivate
-```
