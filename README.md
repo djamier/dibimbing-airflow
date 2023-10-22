@@ -6,7 +6,7 @@ To begin working with Airflow, follow these steps:
 
 Open your terminal and run the following commands:
 ```bash
-https://github.com/sastriodjamier/dibimbing-airflow.git
+git clone https://github.com/sastriodjamier/dibimbing-airflow.git
 ```
 
 ```bash
@@ -32,6 +32,9 @@ This command will do the following things:
 # Airflow Setup
 
 To start Airflow, you can run the following commands:
+```bash
+mkdir -p ./dags ./logs ./plugins ./config ./resources
+```
 
 ```bash
 touch .env
