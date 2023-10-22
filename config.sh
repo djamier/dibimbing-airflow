@@ -5,7 +5,7 @@ then
     python -m venv venv
 fi
 
-echo 'activating .venv'
+echo 'activating venv'
 source venv/bin/activate
 
 echo 'install packages'
