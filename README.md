@@ -46,7 +46,7 @@ docker compose up airflow-init
 ```
 
 ```bash
-docker-compose up -d
+docker-compose --env-file .env up -d
 ```
 This command will start Airflow and its dependencies in separate Docker containers, and the -d flag runs the containers in detached mode, allowing you to continue using your terminal.
 
