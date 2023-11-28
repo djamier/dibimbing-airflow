@@ -29,20 +29,37 @@ x-airflow-common:
 services:
   postgres:
     image: postgres:13
-    ports:
-      - '5432:5432'
+    container_name: postgres-metadata
+    restart: always
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
       retries: 5
-    restart: always
+    
 
+  postgres-dwh:
+    image: postgres:13
+    container_name: postgres-dwh
+    restart: unless-stopped
+    hostname: postgres-dwh
+    environment:
+      POSTGRES_USER: data_warehouse
+      POSTGRES_PASSWORD: data_warehouse
+      POSTGRES_DB: data_warehouse
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ../data:/data
+    ports:
+      - '5430:5432'
+      
   airflow-webserver:
     <<: *airflow-common
     command: webserver
