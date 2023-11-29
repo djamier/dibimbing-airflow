@@ -63,6 +63,8 @@ services:
   airflow-webserver:
     <<: *airflow-common
     command: webserver
+    volumes:
+      - ./requirements.txt:/opt/airflow/requirements.txt
     ports:
       - 8082:8080
     healthcheck:
